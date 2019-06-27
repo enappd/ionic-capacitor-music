@@ -1,0 +1,133 @@
+/**
+ *Ionic 4 Spotify app starter - Ion Spotify (https://store.enappd.com/product/ionic-4-spotify-app-starter)
+ *
+ * Copyright © 2019-present Enappd. All rights reserved.
+ *
+ * This source code is licensed as per the terms found in the
+ * LICENSE.md file in the root directory of this source tree.
+ */
+ ion-content {
+
+    --background: linear-gradient(to top, #060606, #00695C);
+}
+
+ion-toolbar {
+    --background: #00685b;
+}
+
+.marquee {
+    width: 450px;
+    margin: 0 auto;
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+    animation: marquee 50s linear infinite;
+}
+
+ion-title {
+    font-size: 11px;
+}
+
+ion-title.textSubtitle {
+    font-size: 11px;
+    font-weight: bold
+}
+
+.marquee:hover {
+    animation-play-state: paused
+}
+
+/* Make it move */
+@keyframes marquee {
+    0% {
+        text-indent: 30em
+    }
+
+    100% {
+        text-indent: -105em
+    }
+}
+
+.fixedContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 24px;
+    ion-text {
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    .pUser {
+        color: var(--ion-color-light-shade);
+        font-size: 10px;
+        // margin: 12px;
+    }
+
+    ion-thumbnail {
+        width: 280px;
+        height: 280px;
+        background-size: cover !important;
+        background-position: center !important;
+        margin-bottom: 16px;
+        box-shadow: 0 4px 5px -2px rgba(0, 0, 0, 0.6), 0 2px 4px 0 rgba(0, 0, 0, 0.66), 0 1px 5px 0 rgba(0, 0, 0, 0.65);
+        transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1), background-color 15ms linear, color 15ms linear;
+    }
+}
+
+.header-md:after {
+    bottom: 0px;
+}
+
+ion-button.play_pause_btn {
+    width: 65px !important;
+    height: 65px !important;
+    // font-size: 2.3em !important;
+    --border-radius: 50%;
+    --box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    --transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1), background-color 15ms linear, color 15ms linear;
+}
+
+.darkColor {
+    color: black !important;
+    font-size: 32px;
+    margin-left: 3px;
+}
+
+ion-range {
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
+.rangePlaytime {
+    display: flex;
+    justify-content: space-between;
+
+    .startTime {
+        padding-left: 9px;
+    }
+
+    .endTime {
+        padding-right: 15px;
+    }
+}
+
+.Iconsize_For_Rev {
+    font-size: 23px;
+}
+
+.flexRow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.transparent_Item {
+    --background: transparent;
+}
+
+.padding_Top {
+    padding-top: 24px;
+}

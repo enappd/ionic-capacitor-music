@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-toolbar mode="md">
+    <ion-title text-center text-uppercase color="light">Playing from playlist</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="fixedContent">
+    <ion-thumbnail [ngStyle]="{'background':'url('+ image +')'}"></ion-thumbnail>
+  </div>
+
+  <div class="padding_Top">
+    <div class="fixedContent">
+      <ion-text color="light">Hotel California</ion-text>
+      <p text-uppercase color="light" class="pUser microsoft marquee ">Eagles</p>
+    </div>
+    <ion-range min="0" max="{{duration}}" [(ngModel)]="position" color="light">
+    </ion-range>
+    <div class="rangePlaytime">
+      <ion-label class="startTime" color="light">{{ display_position }}</ion-label>
+      <ion-label class="endTime" color="light" *ngIf="duration == -1">--:--</ion-label>
+      <ion-label class="endTime" color="light" *ngIf="duration != -1">{{ display_duration }}</ion-label>
+    </div>
+
+  </div>
+
+  <ion-grid>
+    <ion-row justify-content-center align-items-center style="height: 100%">
+      <ion-col>
+        <div class="flexRow">
+          <div>
+            <ion-button fill="clear" color="light">
+              <ion-icon name="heart-empty" class="Iconsize_For_Rev"></ion-icon>
+            </ion-button>
+          </div>
+
+          <div>
+            <ion-button fill="clear" color="light" (click)="controlSeconds('back')">
+              <ion-icon name="rewind"></ion-icon>
+            </ion-button>
+          </div>
+
+          <div>
+            <ion-button class="play_pause_btn" (click)="play()" color="light" *ngIf="!is_playing" justify-content-center
+              [disabled]="!is_ready" align-items-center>
+              <ion-icon name="play" class="darkColor"></ion-icon>
+            </ion-button>
+
+            <ion-button class="play_pause_btn" (click)="pause()" color="light" *ngIf="is_playing" justify-content-center
+              [disabled]="!is_ready" align-items-center>
+              <ion-icon name="pause" class="darkColor"></ion-icon>
+            </ion-button>
+          </div>
+
+          <div>
+            <ion-button fill="clear" color="light" (click)="controlSeconds('forward')">
+              <ion-icon name="fastforward" class="Iconsize_For_Rev"></ion-icon>
+            </ion-button>
+          </div>
+
+          <div>
+            <ion-button fill="clear" color="light">
+              <ion-icon name="remove-circle-outline" class="Iconsize_For_Rev"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item lines="none" class="transparent_Item">
+          <ion-button slot="start" fill="clear" color="light">
+            <ion-icon name="flash" expand="icon-only" class="Iconsize_For_Rev"></ion-icon>
+          </ion-button>
+          <ion-button slot="end" fill="clear" color="light">
+            <ion-icon name="share" expand="icon-only" class="Iconsize_For_Rev"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
