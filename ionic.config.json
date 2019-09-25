@@ -1,7 +1,8 @@
 {
   "name": "ionic-4-music",
   "integrations": {
-    "cordova": {}
+    "cordova": {},
+    "capacitor": {}
   },
   "type": "angular"
 }
