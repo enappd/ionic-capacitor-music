@@ -1,6 +1,9 @@
 # ionic-4-music
-Ionic 4 Spotify like Music Player demo
+Ionic 4 Spotify like Music Player demo. 
+Check details in rspective blogs - 
 
+* ![Ionic Angular apps with Cordova](https://enappd.com/blog/spotify-like-music-in-ionic-4-apps/48)
+* ![Ionic Angular apps with Capacitor](https://enappd.com/blog/play-music-in-ionic-capacitor-apps/112/)
 
 # Explore Enappd Store
 ## Free Starters
