@@ -19,11 +19,11 @@ export class MusicplayerPage implements OnInit {
   title: any;
   artist: any;
   image: string = 'assets/album_art.jpg';
-  filename: any = 'Hotel California';
+  filename: any = 'Baba O`reily';
   duration: any = -1;
   curr_playing_file: MediaObject;
   storageDirectory: any;
-  play_The_track: string = "assets/GOT.mp3";
+  play_The_track: string = "/android_asset/public/assets/GOT.mp3"; //note this specific url format is used in android only
   position: any = 0;
   get_position_interval: any;
   is_playing = false;
@@ -38,29 +38,24 @@ export class MusicplayerPage implements OnInit {
   ) {
 
   }
+
   ngOnInit() {
-  }
-
-
-  ionViewDidEnter() {
     // comment out the following line when adjusting UI in browsers
     this.prepareAudioFile();
   }
 
   prepareAudioFile() {
     this.platform.ready().then((res) => {
-      console.log('res', res);
       this.getDuration();
     });
   }
 
   getDuration() {
-    console.log("get duration")
     this.curr_playing_file = this.media.create(this.play_The_track);
-    console.log(this.curr_playing_file);
     // on occassions, the plugin only gives duration of the file if the file is played
     // at least once
     this.curr_playing_file.play();
+
     this.curr_playing_file.setVolume(0.0);  // you don't want users to notice that you are playing the file
     const self = this;
     // The plugin does not give the correct duration on playback start
@@ -69,18 +64,15 @@ export class MusicplayerPage implements OnInit {
     this.get_duration_interval = setInterval(() => {
       if (self.duration === -1 || !self.duration) {
         self.duration = ~~(self.curr_playing_file.getDuration());  // make it an integer
-        console.log(self.duration);
       } else {
         if (self.duration !== temp_duration) {
           temp_duration = self.duration;
-          console.log(self.duration);
         }
         else {
           self.curr_playing_file.stop();
           self.curr_playing_file.release();
 
           clearInterval(self.get_duration_interval);
-          console.log(self.duration);
           this.display_duration = this.toHHMMSS(self.duration);
           self.setToPlayback();
         }
@@ -106,7 +98,6 @@ export class MusicplayerPage implements OnInit {
           break;
       }
     });
-    console.log('audio file set');
     this.is_ready = true;
     this.getAndSetCurrentAudioPosition();
   }
@@ -121,12 +112,10 @@ export class MusicplayerPage implements OnInit {
           if (Math.abs(last_position - position) >= diff) {
             // set position
             self.curr_playing_file.seekTo(last_position * 1000);
-            console.log(last_position);
 
           } else {
             // update position for display
             self.position = position;
-            console.log(position);
             this.display_position = this.toHHMMSS(self.position);
           }
         } else if (position >= self.duration) {
@@ -168,7 +157,6 @@ export class MusicplayerPage implements OnInit {
   }
 
   ngOnDestroy() {
-    console.log(' ngOnDestroy called');
     this.stop();
   }
 
